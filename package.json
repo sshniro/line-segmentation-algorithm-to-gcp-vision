@@ -1,0 +1,19 @@
+{
+  "name": "line-segmentation-algorithm-to-gcp-vision",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision/issues"
+  },
+  "homepage": "https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision#readme"
+}
