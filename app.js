@@ -33,6 +33,32 @@ function mergeNearByWords(data) {
     rawText.pop();
 
     let mergedArray = getMergedLines(lines, rawText);
+
+    coordinatesHelper.getBoundingPolygon(mergedArray);
+    coordinatesHelper.combineBoundingPolygon(mergedArray);
+
+    // This does the line segmentation based on the bounding boxes
+    let finalArray = constructLineWithBoundingPolygon(mergedArray);
+}
+
+// TODO implement the line ordering for multiple words
+function constructLineWithBoundingPolygon(mergedArray) {
+    let finalArray = [];
+
+    for(let i=0; i< mergedArray.length; i++) {
+        if(!mergedArray[i]['matched']){
+            if(mergedArray[i]['match'].length === 0){
+                finalArray.push(mergedArray[i].description)
+            }else{
+                // arrangeWordsInOrder(mergedArray, i);
+                // let index = mergedArray[i]['match'][0]['matchLineNum'];
+                // let secondPart = mergedArray[index].description;
+                // finalArray.push(mergedArray[i].description + ' ' +secondPart);
+                finalArray.push(arrangeWordsInOrder(mergedArray, i));
+            }
+        }
+    }
+    return finalArray;
 }
 
 function getMergedLines(lines,rawText) {
