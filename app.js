@@ -5,9 +5,9 @@ const _ = require('lodash');
 const coordinatesHelper = require('./coordinatesHelper');
 
 
-const content = fs.readFileSync("./json/S01200HS22A9.jpeg.json");
+const content = fs.readFileSync("./json/S01200HQT173.jpg.json");
 const textJson = JSON.parse(content);
-mergeNearByWords(textJson);
+mergeNearByWords(textJson[0]['responses'][0]);
 
 
 /**
@@ -39,6 +39,7 @@ function mergeNearByWords(data) {
 
     // This does the line segmentation based on the bounding boxes
     let finalArray = constructLineWithBoundingPolygon(mergedArray);
+    console.log(finalArray);
 }
 
 // TODO implement the line ordering for multiple words
@@ -99,4 +100,25 @@ function getMergedLines(lines,rawText) {
         }
     }
     return mergedArray;
+}
+
+function arrangeWordsInOrder(mergedArray, k) {
+    let mergedLine = '';
+    let wordArray = [];
+    let line = mergedArray[k]['match'];
+    // [0]['matchLineNum']
+    for(let i=0; i < line.length; i++){
+        let index = line[i]['matchLineNum'];
+        let matchedWordForLine = mergedArray[index].description;
+
+        let mainX = mergedArray[k].boundingPoly.vertices[0].x;
+        let compareX = mergedArray[index].boundingPoly.vertices[0].x;
+
+        if(compareX > mainX) {
+            mergedLine = mergedArray[k].description + ' ' + matchedWordForLine;
+        }else {
+            mergedLine = matchedWordForLine + ' ' + mergedArray[k].description;
+        }
+    }
+    return mergedLine;
 }

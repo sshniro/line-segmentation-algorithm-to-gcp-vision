@@ -96,6 +96,44 @@ function combineBoundingPolygon(mergedArray) {
     }
 }
 
+function getRectangle(v, isRoundValues, avgHeight, isAdd) {
+    if(isAdd){
+        v[1].y = v[1].y + avgHeight;
+        v[0].y = v[0].y + avgHeight;
+    }else {
+        v[1].y = v[1].y - avgHeight;
+        v[0].y = v[0].y - avgHeight;
+    }
+
+    let yDiff = (v[1].y - v[0].y);
+    let xDiff = (v[1].x - v[0].x);
+
+    let gradient = yDiff / xDiff;
+
+    let xThreshMin = 1;
+    let xThreshMax = 2000;
+
+    let yMin;
+    let yMax;
+    if(gradient === 0) {
+        // extend the line
+        yMin = v[0].y;
+        yMax = v[0].y;
+    }else{
+        yMin = (v[0].y) - (gradient * (v[0].x - xThreshMin));
+        yMax = (v[0].y) + (gradient * (xThreshMax - v[0].x));
+    }
+    if(isRoundValues) {
+        yMin = Math.round(yMin);
+        yMax = Math.round(yMax);
+    }
+    return {xMin : xThreshMin, xMax : xThreshMax, yMin: yMin, yMax: yMax};
+}
+
+function createRectCoordinates(line1, line2) {
+    return [[line1.xMin, line1.yMin], [line1.xMax, line1.yMax], [line2.xMax, line2.yMax],[line2.xMin, line2.yMin]];
+}
+
 var exports = module.exports = {};
 
 exports.getYMax = function (data) {
