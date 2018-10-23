@@ -1,0 +1,18 @@
+language: node_js
+
+install:
+  - npm install
+
+node_js:
+  - "9.5"
+  - "8"
+
+cache:
+  directories:
+    - "node_modules"
+
+notifications:
+  email:
+    on_failure: always
+    on_success: change
+
