@@ -1,28 +1,25 @@
 const fs = require("fs");
 const deepcopy = require("deepcopy");
-const _ = require('lodash');
-
 const coordinatesHelper = require('./coordinatesHelper');
 
-
-const content = fs.readFileSync("./json/S01200HQT173.jpg.json");
+const content = fs.readFileSync("../json/S01200HQT173.jpg.json");
 const textJson = JSON.parse(content);
-mergeNearByWords(textJson[0]['responses'][0]);
 
+initLineSegmentation(textJson[0]['responses'][0]);
 
 /**
  * GCP Vision groups several nearby words to appropriate lines
  * But will not group words that are too far away
  * This function combines nearby words and create a combined bounding polygon
  */
-
-function mergeNearByWords(data) {
+function initLineSegmentation(data) {
 
     const yMax = coordinatesHelper.getYMax(data);
     data = coordinatesHelper.invertAxis(data, yMax);
 
-    // Auto identified and merged lines from gcp vision
+    // The first index refers to the auto identified words which belongs to a sings line
     let lines = data.textAnnotations[0].description.split('\n');
+
     // gcp vision full text
     let rawText = deepcopy(data.textAnnotations);
 
@@ -38,8 +35,7 @@ function mergeNearByWords(data) {
     coordinatesHelper.combineBoundingPolygon(mergedArray);
 
     // This does the line segmentation based on the bounding boxes
-    let finalArray = constructLineWithBoundingPolygon(mergedArray);
-    console.log(finalArray);
+    return constructLineWithBoundingPolygon(mergedArray);
 }
 
 // TODO implement the line ordering for multiple words
@@ -122,3 +118,9 @@ function arrangeWordsInOrder(mergedArray, k) {
     }
     return mergedLine;
 }
+
+var exports = module.exports = {};
+
+exports.initLineSegmentation = function (data) {
+    return initLineSegmentation(data);
+};
