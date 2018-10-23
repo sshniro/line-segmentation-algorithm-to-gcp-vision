@@ -1,6 +1,11 @@
 const inside = require('point-in-polygon');
 const deepcopy = require("deepcopy");
 
+/**
+ * @Method computes the maximum y coordinate from the identified text blob
+ * @param data
+ * @returns {*}
+ */
 function getYMax(data) {
     let v = data.textAnnotations[0].boundingPoly.vertices;
     let yArray = [];
@@ -10,11 +15,17 @@ function getYMax(data) {
     return Math.max.apply(null, yArray);
 }
 
+/**
+ * @Method inverts the y axis coordinates for easier computation
+ * as the google vision starts the y axis from the bottom
+ * @param data
+ * @param yMax
+ * @returns {*}
+ */
 function invertAxis(data, yMax) {
     data = fillMissingValues(data);
     for(let i=1; i < data.textAnnotations.length; i++ ){
         let v = data.textAnnotations[i].boundingPoly.vertices;
-        let yArray = [];
         for(let j=0; j <4; j++){
             v[j]['y'] = (yMax - v[j]['y']);
         }
@@ -22,14 +33,20 @@ function invertAxis(data, yMax) {
     return data;
 }
 
+/**
+ * @Method sets zero to missing polygon coordinates. This behaviour has been observed  in images where
+ * the text starts from the edge of the image. In such scenarios the x/y coordinates have been empty.
+ * @param data
+ * @returns {*}
+ */
 function fillMissingValues(data) {
     for(let i=1; i < data.textAnnotations.length; i++ ){
         let v = data.textAnnotations[i].boundingPoly.vertices;
         v.map((ver) => {
-            if(ver['x'] == undefined){
+            if(ver['x'] === undefined){
                 ver['x'] = 0;
             }
-            if(ver['y'] == undefined){
+            if(ver['y'] === undefined){
                 ver['y'] = 0;
             }
         });
@@ -37,6 +54,10 @@ function fillMissingValues(data) {
     return data;
 }
 
+/**
+ *
+ * @param mergedArray
+ */
 function getBoundingPolygon(mergedArray) {
 
     for(let i=0; i< mergedArray.length; i++) {
@@ -65,7 +86,6 @@ function getBoundingPolygon(mergedArray) {
         mergedArray[i]['match'] = [];
         mergedArray[i]['matched'] = false;
     }
-
 }
 
 

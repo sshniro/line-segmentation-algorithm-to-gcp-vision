@@ -1,3 +1,5 @@
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/sshniro/line-segmentation-algorithm-to-gcp-vision.svg?branch=master)](https://travis-ci.com/sshniro/line-segmentation-algorithm-to-gcp-vision)
 # Introduction
 
 Google vision outperforms most of the cloud ocr providers. It provides two options for OCR capabilities.
@@ -33,8 +35,8 @@ Stage 1 should be completed because for price related text like $3.40 is present
 Google Vision (word 1: $3. word 2:,40). The first stage helps to concat nearby characters to form a text-block/word. 
 This step helps reduces the computation needed for the second phase.
 
-The stage 2 algorithm draws an imaginary bounding polygon(imaginary) with a threshold over words and computes the 
-words which belongs to each lines.
+The stage 2 algorithm draws an imaginary bounding polygon (with a threshold) over the words and computes the 
+words which belongs to each line.
 
 ## Issues.
 
