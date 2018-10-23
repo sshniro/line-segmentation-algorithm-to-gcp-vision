@@ -33,7 +33,6 @@ function fillMissingValues(data) {
                 ver['y'] = 0;
             }
         });
-        data.textAnnotations[i].boundingPoly.vertices = v;
     }
     return data;
 }
