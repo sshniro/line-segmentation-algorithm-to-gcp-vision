@@ -1,5 +1,5 @@
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/sshniro/line-segmentation-algorithm-to-gcp-vision.svg?branch=master)](https://travis-ci.com/sshniro/line-segmentation-algorithm-to-gcp-vision)
+[![Build Status](https://travis-ci.org/sshniro/line-segmentation-algorithm-to-gcp-vision.svg?branch=master)](https://travis-ci.com/sshniro/line-segmentation-algorithm-to-gcp-vision)
 # Introduction
 
 Google vision outperforms most of the cloud ocr providers. It provides two options for OCR capabilities.
