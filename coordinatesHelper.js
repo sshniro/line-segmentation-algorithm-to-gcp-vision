@@ -25,12 +25,14 @@ function invertAxis(data, yMax) {
 function fillMissingValues(data) {
     for(let i=1; i < data.textAnnotations.length; i++ ){
         let v = data.textAnnotations[i].boundingPoly.vertices;
-        if(v['x'] == undefined){
-            v['x'] = 0;
-        }
-        if(v['y'] == undefined){
-            v['y'] = 0;
-        }
+        v.map((ver) => {
+            if(ver['x'] == undefined){
+                ver['x'] = 0;
+            }
+            if(ver['y'] == undefined){
+                ver['y'] = 0;
+            }
+        });
     }
     return data;
 }
