@@ -43,6 +43,14 @@ words which belongs to each line.
 The algorithm successfully works for most of the slanted and slightly crumpled images. But it will fail to highly 
 crumpled or folded images.
 
+## Usage 
+##### Node JS
+
+- cd nodejs
+- npm install
+- npm test
+
+
 ## Future Work
 
 Try to implement the water-flow algorithm for line segmentation and measure accuracies with bounding polygon approach. 
