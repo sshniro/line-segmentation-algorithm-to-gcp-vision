@@ -1,4 +1,4 @@
-const appHelper = require('../app');
+const appHelper = require('..');
 const fs = require("fs");
 
 test('it should', () => {

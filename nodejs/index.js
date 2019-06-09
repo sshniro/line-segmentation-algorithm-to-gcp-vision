@@ -1,11 +1,5 @@
-const fs = require("fs");
-const deepcopy = require("deepcopy");
+const deepCopy = require("deepcopy");
 const coordinatesHelper = require('./coordinatesHelper');
-
-const content = fs.readFileSync("../json/S01200HQT173.jpg.json");
-const textJson = JSON.parse(content);
-
-initLineSegmentation(textJson[0]['responses'][0]);
 
 /**
  * GCP Vision groups several nearby words to appropriate lines
@@ -21,7 +15,7 @@ function initLineSegmentation(data) {
     let lines = data.textAnnotations[0].description.split('\n');
 
     // gcp vision full text
-    let rawText = deepcopy(data.textAnnotations);
+    let rawText = deepCopy(data.textAnnotations);
 
     // reverse to use lifo, because array.shift() will consume 0(n)
     lines = lines.reverse();
@@ -63,7 +57,7 @@ function getMergedLines(lines,rawText) {
     let mergedArray = [];
     while(lines.length !== 1) {
         let l = lines.pop();
-        let l1 = deepcopy(l);
+        let l1 = deepCopy(l);
         let status = true;
 
         let data = "";

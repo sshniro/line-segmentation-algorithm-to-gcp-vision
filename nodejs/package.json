@@ -1,17 +1,17 @@
 {
   "name": "line-segmentation-algorithm-to-gcp-vision",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision.git"
   },
-  "author": "",
+  "author": "Nirojan Selvanathan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision/issues"
