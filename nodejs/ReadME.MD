@@ -4,7 +4,11 @@
 
 Using npm:
 
-``npm i line-segmentation-algorithm-to-gcp-vision``
+The NPM package is available in the following [respoitory](https://www.npmjs.com/package/line-segmentation-algorithm-to-gcp-vision). Use the following command to install the repository locally.
+
+```js
+npm i line-segmentation-algorithm-to-gcp-vision
+```
 
 ## Usage in Node.js
 
