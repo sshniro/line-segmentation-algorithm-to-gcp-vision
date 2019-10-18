@@ -54,7 +54,6 @@ function getMergedLines(lines,rawText) {
         let l1 = deepCopy(l);
         let status = true;
 
-        let data = "";
         let mergedElement;
         while (true) {
             let wElement = rawText.pop();
@@ -64,7 +63,6 @@ function getMergedLines(lines,rawText) {
             let w = wElement.description;
 
             let index = l.indexOf(w);
-            let temp;
             // check if the word is inside
             l = l.substring(index + w.length);
             if(status) {
@@ -82,28 +80,28 @@ function getMergedLines(lines,rawText) {
             }
         }
     }
+    console.log(mergedArray)
     return mergedArray;
 }
 
 function arrangeWordsInOrder(mergedArray, k) {
     let mergedLine = '';
-    let wordArray = [];
-    let line = mergedArray[k]['match'];
-    ListMatchArray = [];
+    let ListMatchArray = [];
     ListMatchArray.push(mergedArray[k]);
     mergedArray[k].match.forEach(element => {
         ListMatchArray.push(mergedArray[element.matchLineNum]);
         if(mergedArray[element.matchLineNum].match){
             mergedArray[element.matchLineNum].match.forEach(element2 => {
                 ListMatchArray.push(mergedArray[element2.matchLineNum]);
-            })
+            });
         }
     });
     
     ListMatchArray.sort((a, b) => (a.boundingPoly.vertices[0].x > b.boundingPoly.vertices[0].x) ? 1 : 
         (a.boundingPoly.vertices[0].x === b.boundingPoly.vertices[0].x) ? (
             (a.boundingPoly.vertices[0].y < b.boundingPoly.vertices[0].y) ? 1 : -1) : -1 )
-    ListMatchArray.forEach(element => {
+    
+            ListMatchArray.forEach(element => {
         mergedLine = mergedLine + ' ' + element.description;
     });
     return mergedLine.substring(1);
