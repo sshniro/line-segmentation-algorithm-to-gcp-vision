@@ -80,7 +80,6 @@ function getMergedLines(lines,rawText) {
             }
         }
     }
-    console.log(mergedArray)
     return mergedArray;
 }
 
