@@ -4,7 +4,7 @@
 
 Using npm:
 
-The NPM package is available in the following [respoitory](https://www.npmjs.com/package/line-segmentation-algorithm-to-gcp-vision). Use the following command to install the repository locally.
+The NPM package is available in the following [repository](https://www.npmjs.com/package/line-segmentation-algorithm-to-gcp-vision). Use the following command to install the repository locally.
 
 ```js
 npm i line-segmentation-algorithm-to-gcp-vision
