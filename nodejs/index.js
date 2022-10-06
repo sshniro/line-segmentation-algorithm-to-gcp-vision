@@ -96,6 +96,7 @@ function arrangeWordsInOrder(mergedArray, k) {
     let mergedLine = '';
     let wordArray = [];
     let line = mergedArray[k]['match'];
+    let wordForLineK = mergedArray[k].description;
     // [0]['matchLineNum']
     for(let i=0; i < line.length; i++){
         let index = line[i]['matchLineNum'];
@@ -105,9 +106,11 @@ function arrangeWordsInOrder(mergedArray, k) {
         let compareX = mergedArray[index].boundingPoly.vertices[0].x;
 
         if(compareX > mainX) {
-            mergedLine = mergedArray[k].description + ' ' + matchedWordForLine;
+            mergedLine = wordForLineK + ' ' + matchedWordForLine;
+            wordForLineK = mergedLine
         }else {
-            mergedLine = matchedWordForLine + ' ' + mergedArray[k].description;
+            mergedLine = matchedWordForLine + ' ' + wordForLineK;
+            wordForLineK = mergedLine
         }
     }
     return mergedLine;
