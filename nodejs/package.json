@@ -1,7 +1,7 @@
 {
   "name": "line-segmentation-algorithm-to-gcp-vision",
   "version": "1.0.2",
-  "description": "",
+  "description": "Reconstructs line / reading order from Google Cloud Vision OCR output for sparse documents such as receipts and invoices.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -12,16 +12,16 @@
     "url": "git+https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision.git"
   },
   "author": "Nirojan Selvanathan",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision/issues"
   },
   "homepage": "https://github.com/sshniro/line-segmentation-algorithm-to-gcp-vision#readme",
   "dependencies": {
     "deepcopy": "^0.6.3",
-    "point-in-polygon": "^1.0.1",
-    "@google-cloud/vision": "^0.12.0",
-    "jsonfile": "^4.0.0",
+    "point-in-polygon": "^1.0.1"
+  },
+  "devDependencies": {
     "jest": "^23.3.0"
   }
 }
