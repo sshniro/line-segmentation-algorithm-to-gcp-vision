@@ -13,9 +13,9 @@ plugins {
 }
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    // Use Maven Central for resolving dependencies.
+    // (JCenter was decommissioned by JFrog and is no longer a reliable source.)
+    mavenCentral()
 }
 
 dependencies {
@@ -24,7 +24,10 @@ dependencies {
 
     // Use the Kotlin JDK 8 standard library.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    compile 'com.google.cloud:google-cloud-vision:1.99.3'
+    // 'api' (not 'implementation'): the public API exposes google-cloud-vision types
+    // (AnnotateImageResponse / EntityAnnotation), so consumers need them transitively.
+    // The deprecated 'compile' keyword had the same transitive semantics and was removed in Gradle 7.
+    api 'com.google.cloud:google-cloud-vision:1.99.3'
     implementation 'com.google.code.gson:gson:2.8.6'
     // Use the Kotlin test library.
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
