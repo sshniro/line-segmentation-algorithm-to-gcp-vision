@@ -5,3 +5,4 @@ test-report\.xml
 *.iml
 kotlin/build
 kotlin/.gradle
+java/target
